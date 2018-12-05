@@ -5,9 +5,6 @@
 ![Platform](https://img.shields.io/badge/platform-ios-lightgrey.svg)
 ![Platform](https://img.shields.io/badge/Carthage-Compatible-green.svg)
 
-
-Coding Challenge that recreates Shudder's featured page and fetches photos and collections using unsplash's API
-
 ![](designer.jpg)
 >Photo by Gage Walker on Unsplash
 

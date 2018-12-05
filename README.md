@@ -24,6 +24,6 @@ Run `git clone https://github.com/e-bushi/GrailedScrollableFeeds` to copy projec
 
 ## Carthage
 
-Run `carthage update --platform ios` to install dependencies
+Run `carthage bootstrap --platform ios` to install dependencies
 
 ### These dependencies are also available via CocoaPods

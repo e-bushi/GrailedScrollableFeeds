@@ -64,6 +64,7 @@ class ScrollableCollectionViewCell: UICollectionViewCell {
     }
     
     public func configureImage(url: String) {
+        //MARK: URL passed from the collectionview method
         let resourceURL = URL(string: url)!
         self.imageV.kf.setImage(with: resourceURL, options: [.transition(.fade(0.3))])
     }

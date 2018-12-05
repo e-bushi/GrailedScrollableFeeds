@@ -28,7 +28,7 @@ extension String {
     }
     
     var humanDate: String? {
-        guard let dayMonthYear = date else { return "Nothing"}
+        guard let dayMonthYear = date else { return "Nothing" }
         return String.toHumanReadableDate.string(from: dayMonthYear)
     }
 }

@@ -20,7 +20,7 @@ class ArticleViewModel {
     var hero: String?
     var image = UIImageView()
     
-    
+    //MARK: Moya provider used for networking
     var articleService = MoyaProvider<ArticleService>(plugins: [NetworkLoggerPlugin(verbose: true)])
     
     convenience init(article: Article) {
@@ -52,6 +52,7 @@ class ArticleViewModel {
         }
     }
     
+    //MARK: Returns url with Image URL endpoint
     func imageSizeResolverUrl(size: Int) -> String {
         guard let hero = hero else { return "Hero not initiated"}
         let resizerURL = "https://cdn.fs.grailed.com/AJdAgnqCST4iPtnUxiGtTz/rotate=deg:exif/rotate=deg:0/resize=width:\(size),fit:crop/output=format:jpg,compress:true,quality:95/\(hero)"
@@ -59,11 +60,9 @@ class ArticleViewModel {
     }
 }
 
+
 extension ArticleViewModel: Equatable {
-    
     static func == (lhs: ArticleViewModel, rhs: ArticleViewModel) -> Bool {
         return lhs.id == rhs.id && lhs.title == rhs.title && lhs.url == rhs.url
     }
-    
-    
 }

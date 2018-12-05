@@ -7,10 +7,7 @@
 //
 
 import Foundation
-
-
-
-
+//MARK: Top Container Model
 struct ArticleData {
     var data: [Article]
     var metadata: Metadata
@@ -33,6 +30,7 @@ extension ArticleData: Codable {
     }
 }
 
+//MARK: Models within data container
 struct Article {
     var id: Int
     var url: String
@@ -80,5 +78,4 @@ struct Pagination: Codable {
     var next_page: String
     var current_page: String
     var previous_page: String
-    
 }

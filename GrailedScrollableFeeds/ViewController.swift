@@ -10,9 +10,9 @@ import UIKit
 
 class ViewController: UIViewController, UICollectionViewDelegate {
     
+    //MARK: Root view models, used to fetch article and saved search data
     var rootArticle: ArticleViewModel = ArticleViewModel()
     var rootSearch: SavedSearchViewModel = SavedSearchViewModel()
-    var metaPagination: Metadata?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,11 +91,11 @@ class ViewController: UIViewController, UICollectionViewDelegate {
 
 }
 
+//MARK: Fetching and binding methods
 extension ViewController {
     
     //MARK: Fetches articles and binds them to article's array
     func articleBinding() {
-        
         rootArticle.captureArticles { (articleVMs) in
             self.articles = articleVMs
         }
@@ -128,11 +128,13 @@ extension ViewController {
     }
 }
 
-
+//MARK: UICollectionViewDatasource Methods
 extension ViewController: UICollectionViewDataSource {
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        //MARK: Depending on the selected segment, collection will populate number of items using datasource
+        //arrays
         switch segmentedControl.selectedSegmentIndex {
         case 0:
             guard let articles = articles else {return 0}
@@ -147,17 +149,17 @@ extension ViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "heroCell", for: indexPath) as! ScrollableCollectionViewCell
+        //MARK: Variable used to resize image
         let size = Int(view.bounds.width * 0.80)
 
-        
         switch segmentedControl.selectedSegmentIndex {
         case 0:
             //TO DO: Retrieve article array from Dictionary
             guard let articles = articles else {
-                print("Doesn't Work")
+                print("Articles are nil")
                 return cell
             }
-            
+            //MARK: If collection view has reached last item, initiate pagination
             if indexPath.item == articles.count - 1 {
                 paginationIntiated()
             }
@@ -183,8 +185,6 @@ extension ViewController: UICollectionViewDataSource {
         }
         
     }
-    
-    
     
 }
 
